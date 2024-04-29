@@ -1,0 +1,20 @@
+---
+- name: Setup
+  hosts: all
+  tasks:
+    - name: Install openssh
+      ansible.builtin.apt:
+        name:
+          - openssh-client
+          - openssh-server
+        update_cache: true
+
+    - name: Create semaphore user
+      ansible.builtin.user:
+        name: semaphore
+        system: true
+        password: $y$j9T$6AngNve30oZDWcpHsJxTC1$OnyDJEzKliWmvjod3i276kaElRUfISn4n1T98hEyRZA
+        update_password: always
+        generate_ssh_key: true
+        ssh_key_type: ed25519
+        groups: sudo
