@@ -16,7 +16,7 @@
 
     - name: Enforce public key authentication for sshd
       ansible.builtin.copy:
-        dest: /etc/ssh/sshd_config.d/enforce_pubkey_auth
+        dest: /etc/ssh/sshd_config.d/enforce_pubkey_auth.conf
         content: |
           PasswordAuthentication no
         owner: root
@@ -27,9 +27,9 @@
 
     - name: Disable root login via ssh
       ansible.builtin.copy:
-        dest: /etc/ssh/sshd_config.d/disable_root_login
+        dest: /etc/ssh/sshd_config.d/disable_root_login.conf
         content: |
-          PremitRootLogin no
+          PermitRootLogin no
         owner: root
         group: root
         mode: '0644'
