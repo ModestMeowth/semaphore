@@ -14,6 +14,6 @@
       ansible.builtin.user:
         name: semaphore
         system: true
-        password: $y$j9T$6AngNve30oZDWcpHsJxTC1$OnyDJEzKliWmvjod3i276kaElRUfISn4n1T98hEyRZA
+        password: $y$j9T$ue0y6ru3Sgu0UfWoO0l/W1$gBbkiB7Ef58fnE25VMvmzoPu5JIZ1QTO0X2CixGY/.6
         update_password: always
         groups: sudo
