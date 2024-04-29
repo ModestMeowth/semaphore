@@ -1,7 +1,11 @@
----
 - name: Setup
   hosts: all
   become: true
+  handlers:
+    - name: Restart sshd
+      ansible.builtin.service:
+        name: ssh
+        state: restarted
   tasks:
     - name: Install openssh
       ansible.builtin.apt:
@@ -9,6 +13,28 @@
           - openssh-client
           - openssh-server
         update_cache: true
+
+    - name: Enforce public key authentication for sshd
+      ansible.builtin.copy:
+        dest: /etc/ssh/sshd_config.d/enforce_pubkey_auth
+        content: |
+          PasswordAuthentication no
+        owner: root
+        group: root
+        mode: '0644'
+      notify:
+        - Restart sshd
+
+    - name: Disable root login via ssh
+      ansible.builtin.copy:
+        dest: /etc/ssh/sshd_config.d/disable_root_login
+        content: |
+          PremitRootLogin no
+        owner: root
+        group: root
+        mode: '0644'
+      notify:
+        - Restart sshd
 
     - name: Create semaphore user
       ansible.builtin.user:
