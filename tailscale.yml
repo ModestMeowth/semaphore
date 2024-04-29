@@ -8,14 +8,6 @@
         state: restarted
 
   tasks:
-    - name: Fetch tailscale keyring
-      ansible.builtin.get_url:
-        url: https://pkgs.tailscale.com/stable/{{ ansible.distribution | lower }}/{{ ansible_distribution_release }}.noarmor.gpg
-        dest: /etc/apt/keyrings/tailscale-archive-keyring.gpg
-        ownwer: root
-        group: root
-        mode: '0644'
-
     - name: Configure tailscale archive
       ansible.builtin.deb822_repository:
         name: tailscale
@@ -24,7 +16,7 @@
         suites: "{{ ansible_distribution_release }}"
         components: main
         signed_by: https://pkgs.tailscale.com/stable/{{ ansible.distribution | lower }}/{{ ansible_distribution_release }}.noarmor.gpg
-      
+
     - name: Install tailscale
       ansible.builtin.apt:
         name: tailcale
