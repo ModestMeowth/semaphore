@@ -1,5 +1,5 @@
-run:
-    ansible-playbook init.yml
+run *ARGS:
+    ansible-playbook init.yml {{ARGS}}
 
 [no-exit-message]
 lint:

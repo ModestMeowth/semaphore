@@ -1,6 +1,7 @@
 ---
 - name: Setup
   hosts: all
+  become: true
   tasks:
     - name: Install openssh
       ansible.builtin.apt:
@@ -15,6 +16,4 @@
         system: true
         password: $y$j9T$6AngNve30oZDWcpHsJxTC1$OnyDJEzKliWmvjod3i276kaElRUfISn4n1T98hEyRZA
         update_password: always
-        generate_ssh_key: true
-        ssh_key_type: ed25519
         groups: sudo
