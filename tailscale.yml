@@ -3,7 +3,7 @@
   become: true
   handlers:
     - name: Restart sshd
-      ansible.builtin.sshd:
+      ansible.builtin.service:
         name: ssh
         state: restarted
 
