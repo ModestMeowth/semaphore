@@ -1,0 +1,11 @@
+ipv4_addresses:
+  - addr: 192.168.0.30
+  - mask: 24
+
+ipv6_addresses:
+  - addr: 2001:470:4312:30/48
+    mask: 48
+
+ssh_listen_addrs:
+  - 100.84.65.30
+  - fd7a:115c:a1e0:ab12:4843:cd96:6254:411e
