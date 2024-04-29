@@ -43,3 +43,9 @@
         password: $y$j9T$ue0y6ru3Sgu0UfWoO0l/W1$gBbkiB7Ef58fnE25VMvmzoPu5JIZ1QTO0X2CixGY/.6
         update_password: always
         groups: sudo
+
+    - name: Add authorized_keys for semaphore user
+      ansible.posix.authorized_key:
+        user: semaphore
+        exclusive: true
+        key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ+dLFzhRSt6OWieyIWXOAEbPKEPmOWlqwALhO9sPr15
