@@ -10,7 +10,7 @@
   tasks:
     - name: Configure tailscale archive
       ansible.builtin.copy:
-        dest: /etc/apt/sources.list/tailscale.sources
+        dest: /etc/apt/sources.list.d/tailscale.sources
         content: |
           X-Repolib-Name: tailscale
           Types: deb
