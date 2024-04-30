@@ -58,6 +58,7 @@
       ansible.builtin.lineinfile:
         dest: /etc/ssh/sshd_config.d/tailscale.conf
         line: ListenAddress {{ item }}
+        create: true
       loop: "{{ tailscale_ips }}"
       when: tailscale_exclusive_ssh
       notify: Restart sshd
