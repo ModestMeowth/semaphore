@@ -8,6 +8,14 @@
         state: restarted
 
   tasks:
+    - name: Fetch tailscale-archive-keyring
+      ansible.builtin.get_url:
+        url: https://pkgs.tailscale.com/stable/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}.noarmor.gpg
+        dest: /etc/apt/tailscale-archive-keyring.gpg
+        owner: root
+        group: root
+        mode: '0755'
+
     - name: Configure tailscale archive
       ansible.builtin.copy:
         dest: /etc/apt/sources.list.d/tailscale.sources
@@ -17,7 +25,7 @@
           URIs: http://pkgs.tailscale.com/stable/{{ ansible_distribution | lower }}
           Suites: {{ ansible_distribution_release }}
           Components: main
-          Signed-by: https://pkgs.tailscale.com/stable/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}.noarmor.gpg
+          Signed-by: /etc/apt/keyrings/tailscale-archive-keyring.gpg
         owner: root
         group: root
         mode: '0755'
