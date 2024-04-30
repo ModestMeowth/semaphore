@@ -39,3 +39,13 @@
         owner: root
         group: root
         mode: '0644'
+      notify: Restart sshd
+
+    - name: Configure ssh to listen only on tailscale ips
+      ansible.buitlin.copy:
+        dest: /etc/ssh/sshd_config.d/tailscale.conf
+        content: |
+          ListenAddress {{ item }}
+      loop: "{{ tailscale_ips }}"
+      when: tailscale_exclusive_ssh
+      notify: Restart sshd

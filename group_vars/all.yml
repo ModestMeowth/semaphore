@@ -1,1 +1,2 @@
-ssh_listen_addrs: []
+tailscale_exclusive_ssh: false
+tailscale_ips: []
