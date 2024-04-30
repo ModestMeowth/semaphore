@@ -1,1 +1,5 @@
 tailscale_exclusive_ssh: true
+
+tailscale_ips:
+  - 100.85.233.90
+  - fd7a:115c:a1e0::d001:e95a
