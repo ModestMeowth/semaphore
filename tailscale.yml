@@ -19,7 +19,7 @@
 
     - name: Install tailscale
       ansible.builtin.apt:
-        name: tailcale
+        name: tailscale
         update_cache: true
 
     - name: Create ssh override dir
