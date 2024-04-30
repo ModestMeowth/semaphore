@@ -59,6 +59,9 @@
         dest: /etc/ssh/sshd_config.d/tailscale.conf
         line: ListenAddress {{ item }}
         create: true
+        owner: root
+        group: root
+        mode: '0644'
       loop: "{{ tailscale_ips }}"
       when: tailscale_exclusive_ssh
       notify: Restart sshd
