@@ -15,9 +15,9 @@
           X-Repolib-Name: tailscale
           Types: deb
           URIs: http://pkgs.tailscale.com/stable/{{ ansible_distribution | lower }}
-          Suites: "{{ ansible_distribution_release }}"
+          Suites: {{ ansible_distribution_release }}
           Components: main
-          Signed_by: https://pkgs.tailscale.com/stable/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}.noarmor.gpg
+          Signed-by: https://pkgs.tailscale.com/stable/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}.noarmor.gpg
         owner: root
         group: root
         mode: '0755'
