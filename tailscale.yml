@@ -42,7 +42,7 @@
       notify: Restart sshd
 
     - name: Configure ssh to listen only on tailscale ips
-      ansible.buitlin.copy:
+      ansible.builtin.copy:
         dest: /etc/ssh/sshd_config.d/tailscale.conf
         content: |
           ListenAddress {{ item }}
